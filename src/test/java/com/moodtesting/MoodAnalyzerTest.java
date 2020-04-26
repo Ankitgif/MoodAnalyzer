@@ -40,12 +40,12 @@ public class MoodAnalyzerTest {
         String mood = moodAnalyzer.analyseMood();
         Assert.assertEquals("SAD", mood);
     }
-    //UC2
+    //UC2-->TC-2.1
     @Test
-    public void givenMessage_InvalidMood_ShouldReturnHappy(){
+    public void givenMessage_NullMood_ShouldReturnHappy(){
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer(Null);
         String mood = moodAnalyzer.analyseMood();
-        Assert.assertEquals("Invalid",mood);
+        Assert.assertEquals("HAPPY",mood);
     }
 
 }
