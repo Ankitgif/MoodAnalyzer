@@ -16,12 +16,17 @@ public class MoodAnalyzerTest {
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
         String mood = moodAnalyzer.analyseMood("This is a happy message");
         Assert.assertEquals("HAPPY", mood);
-
     }
     @Test
     public void givenMessage_WhenProper_ShouldReturnSad(){
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
         String mood = moodAnalyzer.analyseMood("I am in sad mood");
         Assert.assertEquals("SAD", mood);
+    }
+    @Test
+    public void givenMessage_WhenProper_ShouldReturnHappy(){
+        MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
+        String mood = moodAnalyzer.analyseMood("I am in any mood");
+        Assert.assertEquals("HAPPY", mood);
     }
 }
