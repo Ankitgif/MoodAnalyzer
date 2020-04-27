@@ -57,4 +57,14 @@ public class MoodAnalyzerTest {
             Assert.assertEquals("Please enter proper mood", exception.getMessage());
         }
     }
+    //UC3-->TC-3.2 //for Empty mood Throwing Custom Exception
+    @Test
+    public void givenMessage_EmptyMood_ShouldThrowCustomException(){
+        MoodAnalyzer moodAnalyzer = new MoodAnalyzer("");
+        try{
+            String mood = moodAnalyzer.analyseMood();
+        }catch (MoodAnalysisException exception){
+            Assert.assertEquals("Mood should not be empty",exception.getMessage());
+        }
+    }
 }
