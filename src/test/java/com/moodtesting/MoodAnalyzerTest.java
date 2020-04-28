@@ -100,7 +100,7 @@ public class MoodAnalyzerTest {
         try {
             MoodAnalyzer moodAnalyzer = MoodAnalyzerFactory.createMoodAnalyzer();
         } catch (MoodAnalysisException exception) {
-            Assert.assertEquals("Please enter proper class na",exception.getMessage());
+            Assert.assertEquals("Please enter proper class name",exception.getMessage());
         }
 
     }
