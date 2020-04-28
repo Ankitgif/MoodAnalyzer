@@ -86,9 +86,24 @@ public class MoodAnalyzerTest {
     //UC4-->TC-4.1 //Given class should return object
     @Test
     public void givenMoodAnalyzerClass_WhenProper_ShouldReturnObject(){
-            MoodAnalyzer moodAnalyzer = MoodAnalyzerFactory.createMoodAnalyzer();
-            MoodAnalyzer moodAnalyzer1 = new MoodAnalyzer();
-            Assert.assertEquals(moodAnalyzer1, moodAnalyzer);
+        MoodAnalyzer moodAnalyzer = null;
+        try {
+            moodAnalyzer = MoodAnalyzerFactory.createMoodAnalyzer();
+        } catch (MoodAnalysisException exception) {
+            exception.printStackTrace();
         }
+        MoodAnalyzer moodAnalyzer1 = new MoodAnalyzer();
+        Assert.assertEquals(moodAnalyzer1, moodAnalyzer);
+    }
+    @Test
+    public void givenWhen_ImproperClass_ShouldThrowCustomException(){
+        try {
+            MoodAnalyzer moodAnalyzer = MoodAnalyzerFactory.createMoodAnalyzer();
+        } catch (MoodAnalysisException exception) {
+            Assert.assertEquals("Please enter proper class na",exception.getMessage());
+        }
+
+    }
+
 }
 
