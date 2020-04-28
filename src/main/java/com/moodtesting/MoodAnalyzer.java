@@ -29,7 +29,6 @@ public class MoodAnalyzer {
     public String analyseMood() throws MoodAnalysisException {
         return analyseMood(this.message);
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -37,7 +36,6 @@ public class MoodAnalyzer {
         MoodAnalyzer that = (MoodAnalyzer) o;
         return Objects.equals(message, that.message);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(message);
