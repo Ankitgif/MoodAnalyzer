@@ -3,42 +3,58 @@ package com.moodtesting;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class MoodAnalyzerTest {
 
     private String Null;
     //UC1
     @Test
-    public void givenMessage_WhenSad_ShouldReturnSad() throws MoodAnalysisException {
+    public void givenMessage_WhenSad_ShouldReturnSad() {
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer("This is a sad message");
-        String mood = moodAnalyzer.analyseMood();
-        Assert.assertEquals("SAD", mood);
-    }
-    @Test
-    public void givenMessage_WhenHappy_ShouldReturnHappy() throws MoodAnalysisException {
-        MoodAnalyzer moodAnalyzer = new MoodAnalyzer("This is a happy message");
-        String mood = moodAnalyzer.analyseMood();
-        Assert.assertEquals("HAPPY", mood);
+        String mood = null;
+        try {
+            mood = moodAnalyzer.analyseMood();
+            Assert.assertEquals("SAD", mood);
+        } catch (MoodAnalysisException exception) {
+            exception.printStackTrace();
+        }
     }
     //TC-1.1
     @Test
-    public void givenMessage_WhenProper_ShouldReturnSad() throws MoodAnalysisException {
+    public void givenMessage_WhenProper_ShouldReturnSad() {
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer("I am in sad mood");
-        String mood = moodAnalyzer.analyseMood();
-        Assert.assertEquals("SAD", mood);
+        String mood = null;
+        try {
+            mood = moodAnalyzer.analyseMood();
+            Assert.assertEquals("SAD", mood);
+        } catch (MoodAnalysisException exception) {
+            exception.printStackTrace();
+        }
     }
     //TC-1.2
     @Test
-    public void givenMessage_WhenProper_ShouldReturnHappy() throws MoodAnalysisException {
+    public void givenMessage_WhenProper_ShouldReturnHappy() {
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer("I am in any mood");
-        String mood = moodAnalyzer.analyseMood();
+        String mood = null;
+        try {
+            mood = moodAnalyzer.analyseMood();
+        } catch (MoodAnalysisException exception) {
+            exception.printStackTrace();
+        }
         Assert.assertEquals("HAPPY", mood);
     }
     //Repeat TC-1.1
     @Test
-    public void givenMessage_NoParameter_ShouldReturnSad() throws MoodAnalysisException {
+    public void givenMessage_NoParameter_ShouldReturnSad(){
         MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
-        String mood = moodAnalyzer.analyseMood();
-        Assert.assertEquals("SAD", mood);
+        String mood = null;
+        try {
+            mood = moodAnalyzer.analyseMood();
+            Assert.assertEquals("SAD", mood);
+        } catch (MoodAnalysisException exception) {
+            exception.printStackTrace();
+        }
     }
     //UC2-->TC-2.1  //for handle exception
 //    @Test
@@ -54,7 +70,7 @@ public class MoodAnalyzerTest {
         try {
            String mood = moodAnalyzer.analyseMood();
         } catch (MoodAnalysisException exception) {
-            Assert.assertEquals("Please enter proper mood", exception.getMessage());
+            Assert.assertEquals(MoodAnalysisException.exceptionType.NULL_MOOD,exception.type);
         }
     }
     //UC3-->TC-3.2 //for Empty mood Throwing Custom Exception
@@ -64,7 +80,15 @@ public class MoodAnalyzerTest {
         try{
             String mood = moodAnalyzer.analyseMood();
         }catch (MoodAnalysisException exception){
-            Assert.assertEquals("Mood should not be empty",exception.getMessage());
+            Assert.assertEquals(MoodAnalysisException.exceptionType.EMPTY_MOOD,exception.type);
         }
     }
+    //UC4-->TC-4.1 //Given class should return object
+    @Test
+    public void givenMoodAnalyzerClass_WhenProper_ShouldReturnObject(){
+            MoodAnalyzer moodAnalyzer = MoodAnalyzerFactory.createMoodAnalyzer();
+            MoodAnalyzer moodAnalyzer1 = new MoodAnalyzer();
+            Assert.assertEquals(moodAnalyzer1, moodAnalyzer);
+        }
 }
+
