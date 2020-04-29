@@ -14,7 +14,7 @@ public class MoodAnalyzerReflector {
         } catch (ClassNotFoundException exception) {
             throw new MoodAnalysisException("Please enter proper class name", MoodAnalysisException.exceptionType.CLASS_NOT_FOUND);
         } catch (NoSuchMethodException e) {
-            throw new MoodAnalysisException("No such method error",MoodAnalysisException.exceptionType.NO_SUCH_METHOD_ERROR);
+            throw new MoodAnalysisException("No Such Method Error",MoodAnalysisException.exceptionType.NO_SUCH_METHOD_ERROR);
         } catch (SecurityException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
@@ -38,7 +38,7 @@ public class MoodAnalyzerReflector {
         } catch (ClassNotFoundException exception) {
             throw new MoodAnalysisException("Please enter proper class name", MoodAnalysisException.exceptionType.CLASS_NOT_FOUND);
         } catch (NoSuchMethodException e) {
-            throw new MoodAnalysisException("No such method error",MoodAnalysisException.exceptionType.NO_SUCH_METHOD_ERROR);
+            throw new MoodAnalysisException("No Such Method Error",MoodAnalysisException.exceptionType.NO_SUCH_METHOD_ERROR);
         } catch (SecurityException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
@@ -52,7 +52,7 @@ public class MoodAnalyzerReflector {
         }
         return null;
     }
-    public static Object invokeMethod(Object moodAnalyserObject, String methodName){
+    public static Object invokeMethod(Object moodAnalyserObject, String methodName) throws MoodAnalysisException {
         try {
             return moodAnalyserObject.getClass().getMethod(methodName).invoke(moodAnalyserObject);
         } catch (IllegalAccessException e) {
@@ -60,7 +60,7 @@ public class MoodAnalyzerReflector {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
-            e.printStackTrace();
+            throw new MoodAnalysisException("No Such Method Error",MoodAnalysisException.exceptionType.NO_SUCH_METHOD_ERROR);
         }
         return moodAnalyserObject;
     }
