@@ -201,7 +201,18 @@ public class MoodAnalyzerTest {
         } catch (MoodAnalysisException exception) {
             exception.printStackTrace();
         }
-
+    }
+    //UC7-->TC-7.1 //Set the field value and invoke method using reflection
+    @Test
+    public void givenEmptyMessage_WithReflection_ShouldReturnHappy(){
+        try {
+            Object myObject = MoodAnalyzerReflector.createMoodAnalyzer("com.moodtesting.MoodAnalyzer","");
+            MoodAnalyzerReflector.setFieldValue(myObject, "message", "I am in happy mood");
+            Object mood = MoodAnalyzerReflector.invokeMethod(myObject, "analyseMood");
+            Assert.assertEquals("HAPPY", mood);
+        } catch (MoodAnalysisException exception) {
+            exception.printStackTrace();
+        }
     }
 }
 
