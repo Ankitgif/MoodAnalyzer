@@ -226,5 +226,17 @@ public class MoodAnalyzerTest {
             Assert.assertEquals("No Such Field Error",exception.getMessage());
         }
     }
+    //UC7-->TC-7.3 //Setting Null Message with Reflector Should Throw Exception
+    @Test
+    public void givenNullField_WithReflection_ShouldThrowCustomException(){
+        Object myObject = null;
+        try {
+            myObject = MoodAnalyzerReflector.createMoodAnalyzer("com.moodtesting.MoodAnalyzer","");
+            MoodAnalyzerReflector.setFieldValue(myObject, "message", null);
+            Object mood = MoodAnalyzerReflector.invokeMethod(myObject, "analyseMood");
+        } catch (MoodAnalysisException exception) {
+            Assert.assertEquals("Invocation Target Exception",exception.getMessage());
+        }
+    }
 }
 
