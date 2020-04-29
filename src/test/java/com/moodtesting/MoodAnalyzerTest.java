@@ -223,7 +223,7 @@ public class MoodAnalyzerTest {
             MoodAnalyzerReflector.setFieldValue(myObject, "messag", "I am in happy mood");
             Object mood = MoodAnalyzerReflector.invokeMethod(myObject, "analyseMood");
         } catch (MoodAnalysisException exception) {
-            Assert.assertEquals("No Such Field Erro",exception.getMessage());
+            Assert.assertEquals("No Such Field Error",exception.getMessage());
         }
     }
 }
