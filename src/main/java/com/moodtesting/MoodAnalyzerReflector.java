@@ -65,14 +65,14 @@ public class MoodAnalyzerReflector {
         }
         return moodAnalyserObject;
     }
-    public static void setFieldValue(Object object, String fieldName, String fieldValue){
+    public static void setFieldValue(Object object, String fieldName, String fieldValue) throws MoodAnalysisException {
         Field field = null;
         try {
             field = object.getClass().getField(fieldName);
             field.setAccessible(true);
             field.set(object,fieldValue);
         } catch (NoSuchFieldException e) {
-            e.printStackTrace();
+            throw new MoodAnalysisException("No Such Field Error",MoodAnalysisException.exceptionType.NO_SUCH_FIELD_ERROR);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
 
