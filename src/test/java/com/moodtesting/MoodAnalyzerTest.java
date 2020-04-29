@@ -178,6 +178,18 @@ public class MoodAnalyzerTest {
             Assert.assertEquals("No such method error",exception.getMessage());
         }
     }
+    //UC6-->TC-6.1 // Given happy message using reflection when proper should return happy mood
+    @Test
+    public void givenHappyMessage_WithReflection_ShouldReturnHappy(){
+        Object myObject = null;
+        try {
+            myObject = MoodAnalyzerReflector.createMoodAnalyzer("com.moodtesting.MoodAnalyzer","I am in happy mood");
+            Object mood = MoodAnalyzerReflector.invokeMethod(myObject, "analyseMood");
+            Assert.assertEquals("HAPPY", mood);
+        } catch (MoodAnalysisException exception) {
+            exception.printStackTrace();
+        }
+    }
 
 }
 
