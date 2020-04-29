@@ -32,7 +32,7 @@ public class MoodAnalyzerFactory {
     public static MoodAnalyzer createMoodAnalyzer(String name, String message) throws MoodAnalysisException {
         try{
             Class<?> moodAnalyzerClass = Class.forName(name);
-            Constructor<?> moodConstructor = moodAnalyzerClass.getConstructor(String.class);
+            Constructor<?> moodConstructor = moodAnalyzerClass.getConstructor(Integer.class);
             Object moodObj = moodConstructor.newInstance(message);
             return (MoodAnalyzer) moodObj;
         } catch (ClassNotFoundException exception) {
