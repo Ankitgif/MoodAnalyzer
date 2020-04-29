@@ -59,7 +59,7 @@ public class MoodAnalyzerReflector {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
-            e.printStackTrace();
+            throw new MoodAnalysisException("Invocation Target Exception",MoodAnalysisException.exceptionType.INVOCATION_TARGET_EXCEPTION);
         } catch (NoSuchMethodException e) {
             throw new MoodAnalysisException("No Such Method Error",MoodAnalysisException.exceptionType.NO_SUCH_METHOD_ERROR);
         }
