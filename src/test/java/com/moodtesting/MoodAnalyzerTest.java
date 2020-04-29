@@ -212,6 +212,7 @@ public class MoodAnalyzerTest {
             Assert.assertEquals("HAPPY", mood);
         } catch (MoodAnalysisException exception) {
             exception.printStackTrace();
+
         }
     }
 }
