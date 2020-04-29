@@ -160,7 +160,7 @@ public class MoodAnalyzerTest {
         MoodAnalyzer moodAnalyzer1 = new MoodAnalyzer("I am in happy mood");
         Assert.assertEquals(moodAnalyzer1,moodAnalyzer);
     }
-    //UC5->TC-5.2
+    //UC5->TC-5.2 //Given Improper class name , throw class not found exception with parameterized constructor
     @Test
     public void givenClassName_WhenImproper_ShouldThrowCustomException(){
         try {
@@ -168,7 +168,16 @@ public class MoodAnalyzerTest {
         } catch (MoodAnalysisException exception) {
             Assert.assertEquals("Please enter proper class name", exception.getMessage());
         }
-
     }
+    //UC5->TC-5.3 //Given constructor not proper , throw custom exception
+    @Test
+    public void givenClass_WhenConstructorNotProper_ShouldThrowCustomException(){
+        try {
+            MoodAnalyzer moodAnalyzerClass = MoodAnalyzerFactory.createMoodAnalyzer("com.moodtesting.MoodAnalyzer","Ram");
+        } catch (MoodAnalysisException exception) {
+            Assert.assertEquals("No such method erro",exception.getMessage());
+        }
+    }
+
 }
 
