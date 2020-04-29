@@ -52,4 +52,16 @@ public class MoodAnalyzerReflector {
         }
         return null;
     }
+    public static Object invokeMethod(Object moodAnalyserObject, String methodName){
+        try {
+            return moodAnalyserObject.getClass().getMethod(methodName).invoke(moodAnalyserObject);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        return moodAnalyserObject;
+    }
 }
