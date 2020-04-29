@@ -212,7 +212,18 @@ public class MoodAnalyzerTest {
             Assert.assertEquals("HAPPY", mood);
         } catch (MoodAnalysisException exception) {
             exception.printStackTrace();
-
+        }
+    }
+    //UC7-->TC-7.2 // Set Field When Improper Should Throw Exception with No Such Field
+    @Test
+    public void givenField_WhenImproper_ShouldThrowCustomException(){
+        Object myObject = null;
+        try {
+            myObject = MoodAnalyzerReflector.createMoodAnalyzer("com.moodtesting.MoodAnalyzer","");
+            MoodAnalyzerReflector.setFieldValue(myObject, "messag", "I am in happy mood");
+            Object mood = MoodAnalyzerReflector.invokeMethod(myObject, "analyseMood");
+        } catch (MoodAnalysisException exception) {
+            Assert.assertEquals("No Such Field Erro",exception.getMessage());
         }
     }
 }
