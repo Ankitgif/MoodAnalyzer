@@ -160,5 +160,15 @@ public class MoodAnalyzerTest {
         MoodAnalyzer moodAnalyzer1 = new MoodAnalyzer("I am in happy mood");
         Assert.assertEquals(moodAnalyzer1,moodAnalyzer);
     }
+    //UC5->TC-5.2
+    @Test
+    public void givenClassName_WhenImproper_ShouldThrowCustomException(){
+        try {
+            MoodAnalyzer moodAnalyzer = MoodAnalyzerFactory.createMoodAnalyzer("com.moodtesting.MoodAnalyzer","I am in happy mood");
+        } catch (MoodAnalysisException exception) {
+            Assert.assertEquals("Please enter proper class name", exception.getMessage());
+        }
+
+    }
 }
 
