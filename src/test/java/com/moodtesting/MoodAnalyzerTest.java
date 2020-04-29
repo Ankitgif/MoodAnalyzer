@@ -96,7 +96,7 @@ public class MoodAnalyzerTest {
     public void givenMoodAnalyzerClass_WhenProper_ShouldReturnObject() {
         MoodAnalyzer moodAnalyzer = null;
         try {
-            moodAnalyzer = MoodAnalyzerFactory.createMoodAnalyzer("com.moodtesting.MoodAnalyzer");
+            moodAnalyzer = MoodAnalyzerReflector.createMoodAnalyzer("com.moodtesting.MoodAnalyzer");
         } catch (MoodAnalysisException exception) {
             exception.printStackTrace();
         }
@@ -108,16 +108,16 @@ public class MoodAnalyzerTest {
     @Test
     public void givenWhen_ImproperClass_ShouldThrowCustomException() {
         try {
-            MoodAnalyzer moodAnalyzer = MoodAnalyzerFactory.createMoodAnalyzer("com.moodtesting.MoodAnalyze");
+            MoodAnalyzer moodAnalyzer = MoodAnalyzerReflector.createMoodAnalyzer("com.moodtesting.MoodAnalyze");
         } catch (MoodAnalysisException exception) {
             Assert.assertEquals("Please enter proper class name", exception.getMessage());
         }
     }
-    //UC4-->TC-4.3 //Given constructor not proper , throw custom exception
+   // UC4-->TC-4.3 //Given constructor not proper , throw custom exception
 //    @Test
 //    public void givenWhen_ConstructorNotProper_ShouldThrowCustomException(){
 //        try {
-//            MoodAnalyzer moodAnalyzerClass = MoodAnalyzerFactory.createMoodAnalyzer("com.moodtesting.MoodAnalyzer");
+//            MoodAnalyzer moodAnalyzerClass = MoodAnalyzerReflector.createMoodAnalyzer("com.moodtesting.MoodAnalyzer");
 //        } catch (MoodAnalysisException exception) {
 //            Assert.assertEquals("No such method error",exception.getMessage());
 //        }
@@ -148,12 +148,12 @@ public class MoodAnalyzerTest {
             e.printStackTrace();
         }
     }
-    //UC5->TC-5.1
+    //UC5->TC-5.1 //comparing objects
     @Test
     public void givenMoodAnalyser_WhenProper_ReturnMoodAnalyserObject(){
         MoodAnalyzer moodAnalyzer = null;
         try {
-            moodAnalyzer = MoodAnalyzerFactory.createMoodAnalyzer("com.moodtesting.MoodAnalyzer","I am in happy mood");
+            moodAnalyzer = MoodAnalyzerReflector.createMoodAnalyzer("com.moodtesting.MoodAnalyzer","I am in happy mood");
         } catch (MoodAnalysisException exception) {
            exception.printStackTrace();
         }
@@ -164,7 +164,7 @@ public class MoodAnalyzerTest {
     @Test
     public void givenClassName_WhenImproper_ShouldThrowCustomException(){
         try {
-            MoodAnalyzer moodAnalyzer = MoodAnalyzerFactory.createMoodAnalyzer("com.moodtesting.MoodAnalyzer","I am in happy mood");
+            MoodAnalyzer moodAnalyzer = MoodAnalyzerReflector.createMoodAnalyzer("com.moodtesting.MoodAnalyzer","I am in happy mood");
         } catch (MoodAnalysisException exception) {
             Assert.assertEquals("Please enter proper class name", exception.getMessage());
         }
@@ -173,7 +173,7 @@ public class MoodAnalyzerTest {
     @Test
     public void givenClass_WhenConstructorNotProper_ShouldThrowCustomException(){
         try {
-            MoodAnalyzer moodAnalyzerClass = MoodAnalyzerFactory.createMoodAnalyzer("com.moodtesting.MoodAnalyzer","I am in happy mood");
+            MoodAnalyzer moodAnalyzerClass = MoodAnalyzerReflector.createMoodAnalyzer("com.moodtesting.MoodAnalyzer","I am in happy mood");
         } catch (MoodAnalysisException exception) {
             Assert.assertEquals("No such method error",exception.getMessage());
         }
