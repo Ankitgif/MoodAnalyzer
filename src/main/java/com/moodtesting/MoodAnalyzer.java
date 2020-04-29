@@ -7,7 +7,7 @@ public class MoodAnalyzer {
     private  String message;
     //Refactor In UC1 after TC-1.2
     public MoodAnalyzer(){
-        message = "I am in sad mood";
+       // message = "I am in sad mood";
     }
     //Refactor In UC1 after TC-1.2
     public MoodAnalyzer(String message){
