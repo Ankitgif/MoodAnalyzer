@@ -1,7 +1,7 @@
 package com.moodtesting;
 
 public class MoodAnalysisException extends Exception {
-    public  enum exceptionType {NULL_MOOD, EMPTY_MOOD, CLASS_NOT_FOUND,NO_SUCH_METHOD_ERROR};
+    public  enum exceptionType {NULL_MOOD, EMPTY_MOOD, CLASS_NOT_FOUND,NO_SUCH_METHOD_ERROR, NO_SUCH_FIELD_ERROR};
     exceptionType type;
 
      public MoodAnalysisException(String message){
