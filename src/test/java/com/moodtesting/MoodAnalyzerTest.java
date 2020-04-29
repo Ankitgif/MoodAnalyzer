@@ -173,9 +173,9 @@ public class MoodAnalyzerTest {
     @Test
     public void givenClass_WhenConstructorNotProper_ShouldThrowCustomException(){
         try {
-            MoodAnalyzer moodAnalyzerClass = MoodAnalyzerFactory.createMoodAnalyzer("com.moodtesting.MoodAnalyzer","Ram");
+            MoodAnalyzer moodAnalyzerClass = MoodAnalyzerFactory.createMoodAnalyzer("com.moodtesting.MoodAnalyzer","I am in happy mood");
         } catch (MoodAnalysisException exception) {
-            Assert.assertEquals("No such method erro",exception.getMessage());
+            Assert.assertEquals("No such method error",exception.getMessage());
         }
     }
 
