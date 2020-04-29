@@ -190,6 +190,18 @@ public class MoodAnalyzerTest {
             exception.printStackTrace();
         }
     }
+    //UC6-->TC-6.2 // Given happy message when improper method should throw custom exception
+    @Test
+    public void givenHappyMessage_WithReflection_WhenImproperMethod_ShouldThrowCustomException(){
+        Object myObject = null;
+        try {
+            myObject = MoodAnalyzerReflector.createMoodAnalyzer("com.moodtesting.MoodAnalyzer","I am in happy mood");
+            Object mood = MoodAnalyzerReflector.invokeMethod(myObject, "analyseMo");
+            Assert.assertEquals("HAPPY", mood);
+        } catch (MoodAnalysisException exception) {
+            exception.printStackTrace();
+        }
 
+    }
 }
 
