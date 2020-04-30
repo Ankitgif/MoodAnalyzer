@@ -68,7 +68,7 @@ public class MoodAnalyzerReflector {
     public static void setFieldValue(Object object, String fieldName, String fieldValue) throws MoodAnalysisException {
         Field field = null;
         try {
-            field = object.getClass().getField(fieldName);
+            field = object.getClass().getDeclaredField(fieldName);
             field.setAccessible(true);
             field.set(object,fieldValue);
         } catch (NoSuchFieldException e) {
