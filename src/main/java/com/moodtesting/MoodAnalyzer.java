@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class MoodAnalyzer {
 
-    public String message;
+    private String message;
 
     //Refactor In UC1 after TC-1.2
     public MoodAnalyzer(){
