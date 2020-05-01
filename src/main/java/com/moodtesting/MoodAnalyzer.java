@@ -8,7 +8,6 @@ public class MoodAnalyzer {
 
     //Refactor In UC1 after TC-1.2
     public MoodAnalyzer(){
-       
     }
     //Refactor In UC1 after TC-1.2
     public MoodAnalyzer(String message){
